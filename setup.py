@@ -1,8 +1,14 @@
 from setuptools import setup, find_packages
+import os
+import re
+
+def get_version():
+    init = open(os.path.join("ghpush", "__init__.py")).read()
+    return re.search(r"""__version__ = ["']{1,3}(.+?)["']{1,3}""", init).group(1)
 
 setup(
     name="ghpush",
-    version="0.1.0",
+    version=get_version(),
     packages=find_packages(),
     install_requires=[
         "click",

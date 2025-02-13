@@ -40,11 +40,6 @@ class AISummarizer:
             # Parse the response
             content = response.choices[0].message.content
             title, description = self._parse_ai_response(content)
-            
-            # Use the gh CLI to create PR with title and description
-            if title and description:
-                os.system(f'gh pr create --title "{title}" --body "{description}"')
-            
             return title, description
 
         except Exception as e:

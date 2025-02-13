@@ -27,7 +27,7 @@ jobs:
         
     - name: Build binary
       run: |
-        pyinstaller --onefile --name gpush src/gpush/cli.py
+        pyinstaller --onefile --name gpush gpush/cli.py
         
     - name: Upload binary
       uses: actions/upload-release-asset@v1

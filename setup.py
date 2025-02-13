@@ -5,8 +5,11 @@ setup(
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
-        "requests",
         "click",
+        "gitpython",
+        "rich",
+        "openai",
+        "python-dotenv",
     ],
     entry_points={
         "console_scripts": [

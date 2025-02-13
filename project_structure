@@ -1,13 +1,12 @@
 gpush/
 ├── pyproject.toml
 ├── README.md
-├── src/
-│   └── gpush/
-│       ├── __init__.py
-│       ├── cli.py
-│       ├── git_operations.py
-│       ├── github_api.py
-│       ├── diff_analyzer.py
-│       └── config.py
+├── gpush/
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── git_operations.py
+│   ├── github_api.py
+│   ├── diff_analyzer.py
+│   └── config.py
 └── tests/
     └── __init__.py 

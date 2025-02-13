@@ -21,7 +21,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11"
 ]
-packages = [{include = "ghpush", from = "src"}]
+packages = [{include = "ghpush", from = "ghpush"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1,<4.0"

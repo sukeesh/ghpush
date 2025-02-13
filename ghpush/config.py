@@ -2,7 +2,6 @@
 import json
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
 class Config:
     def __init__(self):
@@ -10,9 +9,6 @@ class Config:
         self.config_file = self.config_dir / "config.json"
         self._ensure_config_dir()
         self.config = self._load_config()
-        
-        # Load environment variables
-        load_dotenv()
 
     def _ensure_config_dir(self):
         """Ensure configuration directory exists."""
@@ -40,12 +36,5 @@ class Config:
         return os.getenv('GITHUB_TOKEN') or self.config.get('github_token')
 
 def get_openai_api_key():
-    # First check environment variable
-    api_key = os.getenv('OPENAI_API_KEY')
-    
-    # If not found in environment, try loading from .env
-    if not api_key:
-        load_dotenv(silent=True)  # silent=True prevents errors if .env doesn't exist
-        api_key = os.getenv('OPENAI_API_KEY')
-    
-    return api_key 
+    """Get OpenAI API key from environment."""
+    return os.getenv('OPENAI_API_KEY') 

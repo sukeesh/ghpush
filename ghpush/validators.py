@@ -2,6 +2,7 @@
 import os
 import subprocess
 from rich.console import Console
+from .config import get_openai_api_key
 
 console = Console()
 
@@ -11,9 +12,7 @@ def validate_openai_key():
     if not api_key:
         raise ValueError(
             "OpenAI API key not found.\n\n"
-            "To fix this, either:\n"
-            "1. Set the OPENAI_API_KEY environment variable, or\n"
-            "2. Create a .env file with your API key"
+            "To fix this, set the OPENAI_API_KEY environment variable"
         )
     return api_key
 

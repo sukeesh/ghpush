@@ -49,19 +49,17 @@ That's it! GHPush will:
 
 ## ⚙️ Configuration
 
-### OpenAI Integration (Optional)
+### OpenAI Integration (Required)
 
-1. Create your configuration:
+Set your OpenAI API key as an environment variable:
+
 ```bash
-cp .env.example .env
-```
+# Linux/macOS
+export OPENAI_API_KEY=your-api-key-here
 
-2. Add your OpenAI API key:
-```env
-OPENAI_API_KEY=your_openai_api_key_here
+# Windows (PowerShell)
+$env:OPENAI_API_KEY="your-api-key-here"
 ```
-
-> 💡 **Note:** GHPush works perfectly fine without AI integration, falling back to basic summarization.
 
 ## 🛠 Technical Requirements
 

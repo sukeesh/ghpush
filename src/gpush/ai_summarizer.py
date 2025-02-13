@@ -13,8 +13,6 @@ console = Console()
 class AISummarizer:
     def __init__(self):
         self.api_key = os.getenv('OPENAI_API_KEY')
-        if not self.api_key:
-            console.print("[yellow]Warning: OPENAI_API_KEY not found. Will use basic summarization.[/]")
         self.client = OpenAI(api_key=self.api_key)
 
     def generate_summary(self, diff_text: str, commit_messages: list[str]) -> Tuple[str, str]:

@@ -7,15 +7,15 @@ console = Console()
 
 def validate_openai_key():
     """Validate OpenAI API key is set."""
-    api_key = os.getenv('OPENAI_API_KEY')
+    api_key = get_openai_api_key()
     if not api_key:
-        console.print("[red]Error: OPENAI_API_KEY environment variable is not set.[/]")
-        console.print("\nTo fix this:")
-        console.print("1. Copy .env.example to .env:")
-        console.print("   cp .env.example .env")
-        console.print("2. Edit .env and add your OpenAI API key")
-        raise SystemExit(1)
-    return True
+        raise ValueError(
+            "OpenAI API key not found.\n\n"
+            "To fix this, either:\n"
+            "1. Set the OPENAI_API_KEY environment variable, or\n"
+            "2. Create a .env file with your API key"
+        )
+    return api_key
 
 def validate_github_auth():
     """Validate GitHub CLI authentication."""

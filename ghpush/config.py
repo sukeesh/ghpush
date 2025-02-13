@@ -37,4 +37,15 @@ class Config:
 
     def get_github_token(self) -> str:
         """Get GitHub token from configuration or environment."""
-        return os.getenv('GITHUB_TOKEN') or self.config.get('github_token') 
+        return os.getenv('GITHUB_TOKEN') or self.config.get('github_token')
+
+def get_openai_api_key():
+    # First check environment variable
+    api_key = os.getenv('OPENAI_API_KEY')
+    
+    # If not found in environment, try loading from .env
+    if not api_key:
+        load_dotenv(silent=True)  # silent=True prevents errors if .env doesn't exist
+        api_key = os.getenv('OPENAI_API_KEY')
+    
+    return api_key 

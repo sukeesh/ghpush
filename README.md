@@ -12,31 +12,49 @@
 
 ## Installation
 
-1. **Clone the Repository**
+### Installation
 
-   ```bash
-   git clone https://github.com/sukeesh/gpush.git
-   cd gpush
-   ```
+#### Using Pipx (All Platforms)
+```bash
+# Install pipx if you haven't already
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
 
-2. **Install Poetry** (if you haven't already):
+# Install gpush
+pipx install gpush
+```
 
-   ```bash
-   curl -sSL https://install.python-poetry.org | python3 -
-   ```
+That's it! You can now use `gpush` from anywhere.
 
-3. **(Optional) Create and Activate a Virtual Environment Using pyenv**
+### Alternative Installation Methods
 
-   ```bash
-   pyenv virtualenv 3.11.9 gpush
-   pyenv activate gpush
-   ```
+#### Using Homebrew (macOS/Linux)
+```bash
+brew tap sukeesh/gpush
+brew install gpush
+```
 
-4. **Install Dependencies with Poetry**
+### Binary Installation
 
-   ```bash
-   poetry install
-   ```
+Download the latest binary for your platform from our [releases page](https://github.com/sukeesh/gpush/releases).
+
+#### Windows
+1. Download `gpush-windows-latest.exe`
+2. Rename to `gpush.exe`
+3. Move to a directory in your PATH
+
+#### macOS/Linux
+1. Download the appropriate binary
+2. Make it executable: `chmod +x gpush`
+3. Move to a directory in your PATH: `sudo mv gpush /usr/local/bin/`
+
+### Development Installation
+
+```bash
+git clone https://github.com/sukeesh/gpush.git
+cd gpush
+poetry install
+```
 
 ## Configuration
 

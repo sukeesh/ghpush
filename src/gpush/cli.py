@@ -1,6 +1,7 @@
 """Command line interface for GPush."""
 import click
 from pathlib import Path
+import webbrowser
 from rich.console import Console
 from rich.panel import Panel
 
@@ -28,8 +29,15 @@ def main(base):
         current_branch = git_ops.repo.active_branch.name
         git_ops.push_branch(current_branch, base)
 
-        # Open PR creation page in browser
-        git_ops.open_pr_in_browser(base)
+        # Create PR URL with the generated title and description
+        pr_url = git_ops.create_pr_url(base)
+        # Add title and description as URL parameters
+        if title and description:
+            from urllib.parse import quote
+            pr_url += f"&title={quote(title)}&body={quote(description)}"
+
+        # Open in browser
+        webbrowser.open(pr_url)
         
         console.print(Panel(
             f"Branch pushed and PR page opened in browser!\n"

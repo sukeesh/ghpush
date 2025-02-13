@@ -1,6 +1,6 @@
-# GPush
+# GHPush
 
-**GPush** is a command-line tool that automates the process of creating pull requests on GitHub. It leverages your local git diff, generates a PR title and description (using the OpenAI completions API optionally), pushes your branch, and then opens the GitHub PR creation page in your default browser. No GitHub token is required!
+**GHPush** is an AI-powered command-line tool that automates the process of creating pull requests on GitHub. It leverages your local git diff, generates a PR title and description (using the OpenAI completions API optionally), pushes your branch, and then opens the GitHub PR creation page in your default browser. No GitHub token is required!
 
 ## Features
 
@@ -15,8 +15,8 @@
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/sukeesh/gpush.git
-   cd gpush
+   git clone https://github.com/sukeesh/ghpush.git
+   cd ghpush
    ```
 
 2. **Install Poetry** (if you haven't already):
@@ -36,6 +36,19 @@
 
    ```bash
    poetry install
+   ```
+
+5. **Install pipx if you haven't already**
+
+   ```bash
+   python3 -m pip install --user pipx
+   python3 -m pipx ensurepath
+   ```
+
+6. **Install ghpush**
+
+   ```bash
+   pipx install ghpush
    ```
 
 ## Configuration
@@ -64,7 +77,7 @@ If no OpenAI API key is set, GPush will automatically fall back to its basic sum
 Run the tool from the command line as follows:
 
 ```bash
-gpush --base main
+ghpush --base main
 ```
 
 This command does the following:

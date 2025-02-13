@@ -73,10 +73,10 @@ def create_status_table() -> Table:
 @click.command()
 @click.option('--base', default='main', help='Base branch name')
 def main(base):
-    """GPush - Automated GitHub PR creation tool."""
+    """GHPush - AI-powered GitHub PR creation tool."""
     try:
         console.print(Panel.fit(
-            "[bold blue]GPush[/] - GitHub PR Creation Tool",
+            "[bold blue]GHPush[/] - GitHub PR Creation Tool",
             style="bold white on blue"
         ))
         console.print()

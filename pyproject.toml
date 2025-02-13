@@ -41,5 +41,5 @@ flake8 = "^6.0.0"
 ghpush = "ghpush.cli:main"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"

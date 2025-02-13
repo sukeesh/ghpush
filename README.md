@@ -1,127 +1,117 @@
-# GHPush
+<div align="center">
 
-**GHPush** is an AI-powered command-line tool that automates the process of creating pull requests on GitHub. It leverages your local git diff, generates a PR title and description (using the OpenAI completions API optionally), pushes your branch, and then opens the GitHub PR creation page in your default browser. No GitHub token is required!
+# 🚀 GHPush
 
-## Features
+### AI-Powered GitHub Pull Request Creation Tool
 
-- **Automated PR Creation:** Push your branch and automatically open GitHub's PR page.
-- **Diff Analysis:** Generate summaries of code changes by analyzing your local git diff.
-- **AI-Powered Summaries (Optional):** If you provide an OpenAI API key, the tool uses GPT-3.5-turbo to create a more contextual and concise PR title and description.
-- **Fallback Summarization:** In the absence of an API key or if the AI request fails, a basic summarization method is used.
-- **Cross-Platform:** Designed to work seamlessly on Windows, macOS, and Linux.
+[![PyPI version](https://badge.fury.io/py/ghpush.svg)](https://badge.fury.io/py/ghpush)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Downloads](https://pepy.tech/badge/ghpush)](https://pepy.tech/project/ghpush)
 
-## Installation
+</div>
 
-### Installation
-   ```bash
-   git clone https://github.com/sukeesh/ghpush.git
-   cd ghpush
-   ```
-#### Using Pipx (All Platforms)
+---
+
+## 🌟 Overview
+
+**GHPush** is an intelligent command-line tool that revolutionizes your GitHub workflow by automating pull request creation. Using the power of AI, it analyzes your changes, generates meaningful PR titles and descriptions, and streamlines your contribution process - all without requiring a GitHub token!
+
+## ✨ Features
+
+- 🤖 **AI-Powered Summaries:** Leverages OpenAI's GPT models to create contextual PR titles and descriptions
+- 🔄 **Automated Workflow:** Push your branch and open GitHub's PR page in one command
+- 📊 **Smart Diff Analysis:** Intelligent analysis of your code changes
+- 🔒 **No GitHub Token Needed:** Works with your local git configuration
+- 🌐 **Cross-Platform:** Seamless experience on Windows, macOS, and Linux
+- ⚡ **Fallback Mode:** Basic summarization when AI is not configured
+
+## 🚀 Quick Start
+
+### Installation Options
+
+#### 📦 Using pip (Recommended)
 ```bash
-# Install pipx if you haven't already
+pip install ghpush
+```
+
+#### 🛠 Using pipx
+```bash
+# Install pipx if needed
 python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 
-# Install gpush
-pipx install gpush
+# Install ghpush
+pipx install ghpush
 ```
 
-That's it! You can now use `gpush` from anywhere.
-
-### Alternative Installation Methods
-
-#### Using Homebrew (macOS/Linux)
+#### 🍺 Using Homebrew (macOS/Linux)
 ```bash
 brew tap sukeesh/gpush
 brew install gpush
 ```
 
-### Binary Installation
-
-Download the latest binary for your platform from our [releases page](https://github.com/sukeesh/gpush/releases).
-
-#### Windows
-1. Download `gpush-windows-latest.exe`
-2. Rename to `gpush.exe`
-3. Move to a directory in your PATH
-
-#### macOS/Linux
-1. Download the appropriate binary
-2. Make it executable: `chmod +x gpush`
-3. Move to a directory in your PATH: `sudo mv gpush /usr/local/bin/`
-
-### Development Installation
-
-```bash
-git clone https://github.com/sukeesh/gpush.git
-cd gpush
-poetry install
-```
-
-5. **Install pipx if you haven't already**
-
-   ```bash
-   python3 -m pip install --user pipx
-   python3 -m pipx ensurepath
-   ```
-
-6. **Install ghpush**
-
-   ```bash
-   pipx install ghpush
-   ```
-
-## Configuration
-
-### OpenAI API Key (Optional)
-
-To enable AI-powered PR title and description generation:
-
-1. Copy the example environment file:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-2. Edit the `.env` file and replace the placeholder with your OpenAI API key:
-
-   ```env
-   OPENAI_API_KEY=your_openai_api_key_here
-   ```
-
-If no OpenAI API key is set, GPush will automatically fall back to its basic summarization method.  
-**Note:** The previous requirement for a GitHub token has been removed since GPush relies on local git operations to generate PR URLs.
-
-## Usage
-
-Run the tool from the command line as follows:
+## 💫 Usage
 
 ```bash
 ghpush --base main
 ```
 
-This command does the following:
+That's it! GHPush will:
+1. 📝 Analyze your changes
+2. 🤖 Generate a PR title and description
+3. 🔄 Push your branch
+4. 🌐 Open the PR creation page
 
-- Computes the git diff between your current branch and the base branch (`main` by default).
-- Pushes your current branch to the remote repository.
-- Generates a PR title and description using AI summarization (if available) or a basic method otherwise.
-- Opens your default web browser with GitHub's PR creation page pre-filled with the generated title and description
+## ⚙️ Configuration
 
-## Dependencies
+### OpenAI Integration (Optional)
 
-- **Python:** >=3.8.1, <4.0
-- [**Click**](https://click.palletsprojects.com/) for building the command-line interface.
-- [**GitPython**](https://gitpython.readthedocs.io/) for handling git operations.
-- [**Rich**](https://rich.readthedocs.io/) for enhanced terminal output.
-- [**OpenAI**](https://github.com/openai/openai-python) for integration with GPT models (optional).
-- [**python-dotenv**](https://pypi.org/project/python-dotenv/) for loading environment variables from the `.env` file.
+1. Create your configuration:
+```bash
+cp .env.example .env
+```
 
-## Contributing
+2. Add your OpenAI API key:
+```env
+OPENAI_API_KEY=your_openai_api_key_here
+```
 
-Contributions are welcome! Please fork the repository and submit a pull request with your enhancements.
+> 💡 **Note:** GHPush works perfectly fine without AI integration, falling back to basic summarization.
 
-## License
+## 🛠 Technical Requirements
 
-This project is licensed under the MIT License.
+- Python ≥ 3.8.1
+- Dependencies:
+  - [Click](https://click.palletsprojects.com/) - CLI interface
+  - [GitPython](https://gitpython.readthedocs.io/) - Git operations
+  - [Rich](https://rich.readthedocs.io/) - Beautiful terminal output
+  - [OpenAI](https://github.com/openai/openai-python) - AI integration
+  - [python-dotenv](https://pypi.org/project/python-dotenv/) - Environment management
 
+## 🤝 Contributing
+
+We love contributions! Here's how you can help:
+
+1. 🍴 Fork the repository
+2. 🌿 Create your feature branch
+3. 💻 Make your changes
+4. 🔄 Create a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🌟 Show Your Support
+
+If you find GHPush useful, please consider:
+- ⭐ Starring the repository
+- 🐛 Reporting issues
+- 🤝 Contributing to the code
+- 📢 Spreading the word
+
+---
+
+<div align="center">
+Made with ❤️ by <a href="https://github.com/sukeesh">Sukeesh</a>
+</div>

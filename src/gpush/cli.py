@@ -7,6 +7,7 @@ from rich.panel import Panel
 
 from .git_operations import GitOperations
 from .diff_analyzer import DiffAnalyzer
+from .validators import validate_openai_key, validate_github_auth
 
 console = Console()
 
@@ -15,6 +16,10 @@ console = Console()
 def main(base):
     """GPush - Automated GitHub PR creation tool."""
     try:
+        # Validate prerequisites
+        validate_openai_key()
+        validate_github_auth()
+
         git_ops = GitOperations()
         diff_analyzer = DiffAnalyzer()
 

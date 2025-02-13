@@ -18,7 +18,7 @@ class AISummarizer:
         self.client = OpenAI(api_key=self.api_key)
 
     def generate_summary(self, diff_text: str, commit_messages: list[str]) -> Tuple[str, str]:
-        """Generate PR title and description using OpenAI."""
+        """Generate PR title and description using OpenAI"""
         if not self.api_key:
             return None, None
 
@@ -33,7 +33,7 @@ class AISummarizer:
                     {"role": "system", "content": "You are a helpful assistant that generates clear and concise PR titles and descriptions based on git diffs and commit messages."},
                     {"role": "user", "content": prompt}
                 ],
-                temperature=0.7,
+                temperature=0.5,
                 max_tokens=1000
             )
 

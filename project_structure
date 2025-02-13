@@ -1,7 +1,7 @@
-gpush/
+ghpush/
 ├── pyproject.toml
 ├── README.md
-├── gpush/
+├── ghpush/
 │   ├── __init__.py
 │   ├── cli.py
 │   ├── git_operations.py

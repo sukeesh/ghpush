@@ -1,4 +1,4 @@
-"""Configuration management for GPush."""
+"""Configuration management for GHPush."""
 import json
 import os
 from pathlib import Path
@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 class Config:
     def __init__(self):
-        self.config_dir = Path.home() / ".gpush"
+        self.config_dir = Path.home() / ".ghpush"
         self.config_file = self.config_dir / "config.json"
         self._ensure_config_dir()
         self.config = self._load_config()

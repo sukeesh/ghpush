@@ -35,22 +35,6 @@
 pip install ghpush
 ```
 
-#### 🛠 Using pipx
-```bash
-# Install pipx if needed
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-
-# Install ghpush
-pipx install ghpush
-```
-
-#### 🍺 Using Homebrew (macOS/Linux)
-```bash
-brew tap sukeesh/gpush
-brew install gpush
-```
-
 ## 💫 Usage
 
 ```bash

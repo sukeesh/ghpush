@@ -27,7 +27,7 @@ jobs:
         
     - name: Build binary
       run: |
-        pyinstaller --onefile --name gpush gpush/cli.py
+        pyinstaller --onefile --name ghpush ghpush/cli.py
         
     - name: Upload binary
       uses: actions/upload-release-asset@v1
@@ -35,6 +35,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ./dist/gpush${{ matrix.os == 'windows-latest' && '.exe' || '' }}
-        asset_name: gpush-${{ matrix.os }}${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+        asset_path: ./dist/ghpush${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+        asset_name: ghpush-${{ matrix.os }}${{ matrix.os == 'windows-latest' && '.exe' || '' }}
         asset_content_type: application/octet-stream 

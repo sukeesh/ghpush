@@ -1,4 +1,4 @@
-"""Command line interface for GPush."""
+"""Command line interface for GHPush."""
 import click
 from pathlib import Path
 import webbrowser

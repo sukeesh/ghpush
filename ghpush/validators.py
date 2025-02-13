@@ -1,4 +1,4 @@
-"""Validation utilities for GPush."""
+"""Validation utilities for GHPush."""
 import os
 import subprocess
 from rich.console import Console

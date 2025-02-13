@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ghpush"
-version = "0.1.0"
+version = "0.1.1"
 
 description = "AI-powered GitHub PR creation tool that automatically generates PR titles and descriptions"
 authors = ["Your Name <your.email@example.com>"]

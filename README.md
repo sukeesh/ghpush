@@ -95,5 +95,5 @@ If you find GHPush useful, please consider:
 ---
 
 <div align="center">
-Made with ❤️ by <a href="https://github.com/sukeesh">Sukeesh</a>
+Made with <a href="https://github.com/sukeesh">Sukeesh</a>
 </div>

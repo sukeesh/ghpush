@@ -4,10 +4,10 @@
 
 ### AI-Powered GitHub Pull Request Creation Tool
 
-[![PyPI version](https://badge.fury.io/py/ghpush.svg)](https://badge.fury.io/py/ghpush)
+[![PyPI version](https://img.shields.io/pypi/v/ghpush)](https://pypi.org/project/ghpush/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Downloads](https://pepy.tech/badge/ghpush)](https://pepy.tech/project/ghpush)
+[![Downloads](https://img.shields.io/pypi/dm/ghpush)](https://pypi.org/project/ghpush/)
 
 </div>
 

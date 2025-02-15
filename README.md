@@ -5,9 +5,9 @@
 ### AI-Powered GitHub Pull Request Creation Tool
 
 [![PyPI version](https://img.shields.io/pypi/v/ghpush)](https://pypi.org/project/ghpush/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/ghpush)](https://pypi.org/project/ghpush/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Downloads](https://img.shields.io/pypi/dm/ghpush)](https://pypi.org/project/ghpush/)
 
 </div>
 
@@ -37,6 +37,8 @@
 ```bash
 pip install ghpush
 ```
+
+> 💡 **Check out [ghpush on PyPI](https://pypi.org/project/ghpush/) for the latest version and release notes.**
 
 ### Basic Usage
 

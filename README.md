@@ -7,7 +7,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/ghpush)](https://pypi.org/project/ghpush/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/ghpush)](https://pypi.org/project/ghpush/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
 </div>
 
@@ -20,16 +20,6 @@
 - 🤖 **AI Mode**: Generates detailed, context-aware PR titles and descriptions using OpenAI
 - 📝 **Basic Mode**: Creates simple, effective summaries based on file changes
 
-## ✨ Features
-
-- 🔄 **Dual Operation Modes:**
-  - **AI-Powered Mode:** Rich, contextual PR summaries using OpenAI
-  - **Basic Mode:** Simple, effective change summaries
-- 🚀 **Automated Workflow:** Push your branch and open GitHub's PR page in one command
-- 📊 **Smart Diff Analysis:** Intelligent analysis of your code changes
-- 🔒 **No GitHub Token Needed:** Works with your local git configuration
-- 🌐 **Cross-Platform:** Seamless experience on Windows, macOS, and Linux
-
 ## 🚀 Quick Start
 
 ### Installation
@@ -40,7 +30,38 @@ pip install ghpush
 
 > 💡 **Check out [ghpush on PyPI](https://pypi.org/project/ghpush/) for the latest version and release notes.**
 
-### Basic Usage
+### Configuration
+
+#### 1. GitHub CLI Authentication (Required)
+```bash
+# Install GitHub CLI if you haven't already
+brew install gh  # macOS
+# For other platforms, see: https://cli.github.com/
+
+# Authenticate with GitHub
+gh auth login
+```
+
+#### 2. Choose Operating Mode
+
+GHPush operates in two modes:
+
+##### 🤖 AI Mode (Recommended)
+To enable AI-powered summaries:
+```bash
+# Linux/macOS
+export OPENAI_API_KEY=your-api-key-here
+
+# Windows (PowerShell)
+$env:OPENAI_API_KEY="your-api-key-here"
+```
+
+##### 📝 Basic Mode
+- Automatically used when OpenAI API key is not set
+- No configuration needed
+- Provides simple summaries based on changed files
+
+### Usage
 
 ```bash
 ghpush --base main
@@ -52,28 +73,21 @@ That's it! GHPush will:
 3. 🔄 Push your branch
 4. 🌐 Open the PR creation page
 
-## ⚙️ Configuration
+> 💡 **Tip:** Make sure you've authenticated with GitHub CLI (`gh auth login`) before using GHPush.
 
-### Operating Modes
+## ✨ Features
 
-#### 🤖 AI Mode (Optional)
-To enable AI-powered summaries:
-```bash
-# Linux/macOS
-export OPENAI_API_KEY=your-api-key-here
-
-# Windows (PowerShell)
-$env:OPENAI_API_KEY="your-api-key-here"
-```
-
-#### 📝 Basic Mode
-- Automatically used when OpenAI API key is not set
-- No configuration needed
-- Provides simple summaries based on changed files
+- 🔄 **Dual Operation Modes:**
+  - **AI-Powered Mode:** Rich, contextual PR summaries using OpenAI
+  - **Basic Mode:** Simple, effective change summaries
+- 🚀 **Automated Workflow:** Push your branch and open GitHub's PR page in one command
+- 📊 **Smart Diff Analysis:** Intelligent analysis of your code changes
+- 🔒 **No GitHub Token Needed:** Works with your local git configuration
+- 🌐 **Cross-Platform:** Seamless experience on Windows, macOS, and Linux
 
 ## 🛠 Technical Requirements
 
-- Python ≥ 3.8.1
+- Python ≥ 3.11
 - Dependencies:
   - [Click](https://click.palletsprojects.com/) - CLI interface
   - [GitPython](https://gitpython.readthedocs.io/) - Git operations
@@ -96,11 +110,11 @@ cd ghpush
 
 #### Using pyenv (Recommended)
 ```bash
-# Install Python 3.8 or later
-pyenv install 3.8.1
+# Install Python 3.11.9
+pyenv install 3.11.9
 
 # Create a virtual environment
-pyenv virtualenv 3.8.1 ghpush-dev
+pyenv virtualenv 3.11.9 ghpush-dev
 
 # Activate the environment
 pyenv activate ghpush-dev

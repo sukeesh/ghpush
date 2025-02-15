@@ -88,7 +88,8 @@ def main(base):
             validate_task = status_progress.add_task("Validating prerequisites...")
             
             try:
-                validate_openai_key()
+                # Store whether we're using AI mode
+                is_ai_mode = bool(validate_openai_key())
                 status_progress.update_task(validate_task, 50, "Validating GitHub CLI...")
                 validate_github_auth()
                 status_progress.complete_task(validate_task)
@@ -145,7 +146,8 @@ def main(base):
             padding=(1, 2)
         ))
 
-        show_success_message(pr_url, is_ai_mode=bool(title and description))
+        # Pass the actual AI mode status
+        show_success_message(pr_url, is_ai_mode=is_ai_mode)
 
     except Exception as e:
         console.print()

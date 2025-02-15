@@ -4,6 +4,7 @@ from typing import Tuple
 from openai import OpenAI
 from dotenv import load_dotenv
 from rich.console import Console
+from .validators import validate_openai_key
 
 # Load environment variables from .env file
 load_dotenv()
@@ -73,4 +74,28 @@ class AISummarizer:
 
             return title, description
         except Exception:
-            return None, None 
+            return None, None
+
+def generate_summary(diff_content):
+    """Generate summary using AI if available, otherwise use basic summary."""
+    if validate_openai_key():
+        # Use AI-powered summary
+        return generate_ai_summary(diff_content)
+    else:
+        # Fallback to basic summary
+        return generate_basic_summary(diff_content)
+
+def generate_basic_summary(diff_content):
+    """Generate a basic summary without AI."""
+    # Simple logic to create a basic summary
+    # For example, count the number of files changed and lines modified
+    files_changed = len([line for line in diff_content.split('\n') if line.startswith('diff --git')])
+    
+    title = f"Update {files_changed} file{'s' if files_changed != 1 else ''}"
+    description = "Changes include:\n" + "\n".join([
+        line.split(' b/')[-1] 
+        for line in diff_content.split('\n') 
+        if line.startswith('diff --git')
+    ])
+    
+    return title, description 

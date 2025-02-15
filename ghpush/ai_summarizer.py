@@ -13,12 +13,15 @@ console = Console()
 class AISummarizer:
     def __init__(self):
         self.api_key = os.getenv('OPENAI_API_KEY')
-        self.client = OpenAI(api_key=self.api_key)
+        self.client = None
+        if self.api_key:
+            self.client = OpenAI(api_key=self.api_key)
 
     def generate_summary(self, diff_text: str, commit_messages: list[str]) -> Tuple[str, str]:
         """Generate PR title and description using OpenAI"""
-        if not self.api_key:
-            return None, None
+        if not self.api_key or not self.client:
+            # Fallback to basic summary when no API key
+            return self.generate_basic_summary(diff_text)
 
         try:
             # Prepare the prompt
@@ -42,7 +45,21 @@ class AISummarizer:
 
         except Exception as e:
             console.print(f"[yellow]Warning: AI summarization failed ({str(e)}). Using basic summarization.[/]")
-            return None, None
+            return self.generate_basic_summary(diff_text)
+
+    def generate_basic_summary(self, diff_text: str) -> Tuple[str, str]:
+        """Generate a basic summary without AI."""
+        # Simple logic to create a basic summary
+        files_changed = len([line for line in diff_text.split('\n') if line.startswith('diff --git')])
+        
+        title = f"Update {files_changed} file{'s' if files_changed != 1 else ''}"
+        description = "Changes include:\n" + "\n".join([
+            line.split(' b/')[-1] 
+            for line in diff_text.split('\n') 
+            if line.startswith('diff --git')
+        ])
+        
+        return title, description
 
     def _create_prompt(self, diff_text: str, commit_messages: list[str]) -> str:
         """Create the prompt for OpenAI."""

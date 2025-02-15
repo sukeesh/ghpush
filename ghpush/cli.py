@@ -145,6 +145,8 @@ def main(base):
             padding=(1, 2)
         ))
 
+        show_success_message(pr_url, is_ai_mode=bool(title and description))
+
     except Exception as e:
         console.print()
         console.print(Panel(
@@ -154,6 +156,16 @@ def main(base):
             padding=(1, 2)
         ))
         raise SystemExit(1)
+
+def show_success_message(url: str, is_ai_mode: bool = True):
+    """Show success message with PR URL."""
+    mode_text = "[green]AI-Powered[/]" if is_ai_mode else "[yellow]Basic[/]"
+    
+    console.print("\n[green]╭─ 📦 Pull Request Ready ─────────────────────────╮[/]")
+    console.print("[green]│[/]  ✨ Your changes are ready for review!          [green]│[/]")
+    console.print(f"[green]│[/]  🔗 {url}     [green]│[/]")
+    console.print(f"[green]│[/]  🤖 Mode: {mode_text}                          [green]│[/]")
+    console.print("[green]╰────────────────────────────────────────────────╯[/]\n")
 
 if __name__ == "__main__":
     main()

@@ -88,7 +88,8 @@ def main(base):
             validate_task = status_progress.add_task("Validating prerequisites...")
             
             try:
-                validate_openai_key()
+                # Store whether we're using AI mode
+                is_ai_mode = bool(validate_openai_key())
                 status_progress.update_task(validate_task, 50, "Validating GitHub CLI...")
                 validate_github_auth()
                 status_progress.complete_task(validate_task)
@@ -145,6 +146,9 @@ def main(base):
             padding=(1, 2)
         ))
 
+        # Pass the actual AI mode status
+        show_success_message(pr_url, is_ai_mode=is_ai_mode)
+
     except Exception as e:
         console.print()
         console.print(Panel(
@@ -154,6 +158,16 @@ def main(base):
             padding=(1, 2)
         ))
         raise SystemExit(1)
+
+def show_success_message(url: str, is_ai_mode: bool = True):
+    """Show success message with PR URL."""
+    mode_text = "[green]AI-Powered[/]" if is_ai_mode else "[yellow]Basic[/]"
+    
+    console.print("\n[green]╭─ 📦 Pull Request Ready ─────────────────────────╮[/]")
+    console.print("[green]│[/]  ✨ Your changes are ready for review!          [green]│[/]")
+    console.print(f"[green]│[/]  🔗 {url}     [green]│[/]")
+    console.print(f"[green]│[/]  🤖 Mode: {mode_text}                          [green]│[/]")
+    console.print("[green]╰────────────────────────────────────────────────╯[/]\n")
 
 if __name__ == "__main__":
     main()

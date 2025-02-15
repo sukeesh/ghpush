@@ -7,13 +7,17 @@ from .config import get_openai_api_key
 console = Console()
 
 def validate_openai_key():
-    """Validate OpenAI API key is set."""
+    """Check for OpenAI API key and return whether AI features are available."""
     api_key = get_openai_api_key()
     if not api_key:
-        raise ValueError(
-            "OpenAI API key not found.\n\n"
-            "To fix this, set the OPENAI_API_KEY environment variable"
-        )
+        console.print("\n[yellow]╭─ Mode: Basic Summary ──────────────────────────╮[/]")
+        console.print("[yellow]│[/]  🤖 AI features are currently disabled          [yellow]│[/]")
+        console.print("[yellow]│[/]  ℹ️  Operating in basic summary mode           [yellow]│[/]")
+        console.print("[yellow]╰──────────────────────────────────────────────╯[/]")
+        console.print("\n[cyan]To enable AI-powered features:[/]")
+        console.print("  🔑 Set the [bold]OPENAI_API_KEY[/] environment variable")
+        console.print("  💡 Restart ghpush after setting the key\n")
+        return None
     return api_key
 
 def validate_github_auth():
